@@ -12,6 +12,7 @@
             <RowDefinition Height="33*"/>
             <RowDefinition Height="340*"/>
         </Grid.RowDefinitions>
+
         <Grid x:Name="grid_innerGrid" Grid.Row="1" Margin="10,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
@@ -42,17 +43,20 @@
             <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             <TabControl x:Name="tcon_contentTabs" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="2" >
                 <TabItem x:Name="tconitem_groupImage" Header="Group image">
+                    <Viewbox Stretch="Uniform">
                     <Grid Margin="0,0,0,0" x:Name="grid_groupImage">
                         <Image x:Name="image_groupPicture" Source="GroupOfStudents.jpg"/>
-                        <Ellipse x:Name="el_1" Fill="Transparent" HorizontalAlignment="Left" Height="100" Margin="31,26,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="84" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
-                        <Ellipse x:Name="el_2" Fill="Transparent" HorizontalAlignment="Left" Height="85" Margin="145,50,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="81" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
-                        <Ellipse x:Name="el_3" Fill="Transparent" HorizontalAlignment="Left" Height="110" Margin="233,46,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="81" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
-                        <Ellipse x:Name="el_4" Fill="Transparent" HorizontalAlignment="Left" Height="83" Margin="309,48,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="65" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
-                        <Ellipse x:Name="el_5" Fill="Transparent" HorizontalAlignment="Left" Height="92" Margin="373,5,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="75" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
+                        <Ellipse x:Name="el_1" Fill="Transparent" HorizontalAlignment="Left" Height="100" Margin="36,50,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="84" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
+                        <Ellipse x:Name="el_2" Fill="Transparent" HorizontalAlignment="Left" Height="85" Margin="191,81,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="81" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
+                        <Ellipse x:Name="el_3" Fill="Transparent" HorizontalAlignment="Left" Height="110" Margin="301,69,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="81" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
+                        <Ellipse x:Name="el_4" Fill="Transparent" HorizontalAlignment="Left" Height="83" Margin="402,69,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="65" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
+                        <Ellipse x:Name="el_5" Fill="Transparent" HorizontalAlignment="Left" Height="92" Margin="483,10,0,0" Stroke="Transparent" StrokeThickness="4" VerticalAlignment="Top" Width="75" MouseLeftButtonUp="Ellipse_MouseLeftButtonUp" />
                     </Grid>
+                    </Viewbox>
                 </TabItem>
-                <TabItem x:Name="tconitem_studentDetails" Header="Details">
+                <TabItem x:Name="tconitem_studentDetails" Header="Details" Loaded="tconitem_studentDetails_Loaded">
                     <StackPanel DataContext="{Binding SelectedItem, ElementName=lbx_students}">
+                        <Ellipse Width="100" Height="100" x:Name="el_individualPicture"></Ellipse>
                         <DockPanel Margin="0,0,0,5">
                             <TextBlock x:Name="tbl_studentDetailsStudentName" Text="Name" Width="100" DockPanel.Dock="Left"/>
                             <TextBox x:Name="tbx_studentDetailsStudentName" DockPanel.Dock="Right" Text="{Binding name}"/>

@@ -116,7 +116,7 @@ namespace GroupManagementProject_01
             { 
                 el.Stroke = Brushes.Black;
             }
-
+            fillIndividualEllipse();
         }
 
         private void initEllipses()
@@ -156,6 +156,35 @@ namespace GroupManagementProject_01
         private void window_mainWindow_Closed(object sender, EventArgs e)
         {
             MyStorage.storeXML<ObservableCollection<Student>>(students, "Data.xml");
+        }
+
+        private void tconitem_studentDetails_Loaded(object sender, RoutedEventArgs e)
+        {
+
+
+
+
+        }
+
+        private void fillIndividualEllipse()
+        {
+            var element = (Student)(lbx_students.SelectedItem);
+            if (element == null) return;
+
+            Ellipse el = (Ellipse)FindName("el_" + element.id);
+
+            ImageBrush ib_individual = new ImageBrush();
+            ib_individual.ImageSource = image_groupPicture.Source;
+            ib_individual.Stretch = Stretch.UniformToFill;
+            ib_individual.Viewport = new Rect(0.0, 0.0, 1.0, 1.0);
+            double x, y, w, h;
+            x = el.Margin.Left / image_groupPicture.ActualWidth;
+            y = el.Margin.Top / image_groupPicture.ActualHeight;
+            w = el.ActualWidth / image_groupPicture.ActualWidth;
+            h = el.ActualHeight / image_groupPicture.ActualHeight;
+
+            ib_individual.Viewbox = new Rect(x, y, w, h);
+            el_individualPicture.Fill = ib_individual;
         }
     }
 }
