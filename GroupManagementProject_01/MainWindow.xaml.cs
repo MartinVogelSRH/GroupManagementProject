@@ -176,7 +176,7 @@ namespace GroupManagementProject_01
             ImageBrush ib_individual = new ImageBrush();
             ib_individual.ImageSource = image_groupPicture.Source;
             ib_individual.Stretch = Stretch.UniformToFill;
-            ib_individual.Viewport = new Rect(0.0, 0.0, 1.0, 1.0);
+            ib_individual.Viewport = new Rect(0.0, 0.0, k1.0, 1.0);
             double x, y, w, h;
             x = el.Margin.Left / image_groupPicture.ActualWidth;
             y = el.Margin.Top / image_groupPicture.ActualHeight;
